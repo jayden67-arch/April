@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.8s ease-in;
+}
+
+h1 {
+    font-size: 32px;
+    color: #764ba2;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    animation: fadeIn 0.8s ease-in 0.2s both;
+}
+
+button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    display: block;
+    margin: 30px auto 0;
+    animation: fadeIn 0.8s ease-in 0.4s both;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Hi Noelle 💕</h1>
+    <p>I want to tell you that i like you and everytime i hang out wif you i always look forward to it, and every cca time, idk why but i always wanna see you i guess i really like you alot.</p>
+    
+    <p>I enjoy the times when we would eat outside seven eleven like homeless people and talk alot.</p>
+    
+    <p>I would understand if you dont feel the same way towards me. But i rly hope that we would still be close friends even if you say no.</p>
+    
+    <p>So like the next question is gna be rly unavoidable so if you rly dont want to date me its fine and you can jus message me.</p>
+    
+    <button onclick="window.location.href='question.html'">Ready? 💫</button>
+</div>
+
+</body>
+</html>
