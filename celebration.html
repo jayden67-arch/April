@@ -16,49 +16,101 @@ body{
     height:100vh;
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    overflow: hidden;
+}
+
+.celebration-container {
+    text-align: center;
+    z-index: 10;
 }
 
 h1 {
-    font-size: 56px;
+    font-size: 72px;
     color: white;
     margin-bottom: 20px;
-    animation: fadeIn 0.8s ease-in, bounce 1s ease-in-out 0.3s;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.8s ease-in, bounce 1s ease-in-out 0.3s, pulse 2s ease-in-out 1.3s infinite;
+    text-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
 }
 
 h2 {
-    font-size: 28px;
-    color: white;
-    margin-bottom: 30px;
+    font-size: 36px;
+    color: #ffe66d;
+    margin-bottom: 40px;
     animation: fadeIn 0.8s ease-in 0.2s both;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0 15px rgba(255, 230, 109, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+}
+
+.emoji-container {
+    font-size: 80px;
+    margin: 30px 0;
+    animation: spin 3s linear infinite;
+}
+
+.heart {
+    display: inline-block;
+    font-size: 60px;
+    margin: 0 10px;
+    animation: bounce-heart 1s ease-in-out infinite;
+}
+
+.heart:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.heart:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.heart:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.heart:nth-child(5) {
+    animation-delay: 0.4s;
 }
 
 a{
-    margin-top:20px;
-    font-size:18px;
+    margin-top:30px;
+    font-size:20px;
     color: white;
     text-decoration:none;
     cursor:pointer;
-    padding: 12px 24px;
-    border: 2px solid white;
-    border-radius: 30px;
+    padding: 15px 35px;
+    border: 3px solid white;
+    border-radius: 50px;
     transition: all 0.3s ease;
     display: inline-block;
     animation: fadeIn 0.8s ease-in 0.4s both;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 a:hover{
     background: white;
     color: #764ba2;
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    transform: scale(1.15);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
+}
+
+a:active {
+    transform: scale(1.05);
+}
+
+/* Confetti styles */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-30px);
     }
     to {
         opacity: 1;
@@ -71,16 +123,96 @@ a:hover{
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-40px);
+    }
+}
+
+@keyframes bounce-heart {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.2);
+        transform: scale(1);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(255, 105, 180, 1), 2px 2px 4px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes confetti-fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes confetti-float {
+    0%, 100% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(100px) translateY(-50px) rotate(180deg);
     }
 }
 </style>
 </head>
 <body>
 
-<h1>❤️ Yay!! ❤️</h1>
-<h2>I knew you'd say yes! 😊</h2>
-<a href="letter.html">Go back</a>
+<div class="celebration-container">
+    <h1>💕 YAY!! 💕</h1>
+    <h2>I knew you'd say yes! 🥰</h2>
+    
+    <div class="emoji-container">
+        <span class="heart">💕</span>
+        <span class="heart">💖</span>
+        <span class="heart">💗</span>
+        <span class="heart">💓</span>
+        <span class="heart">💝</span>
+    </div>
+    
+    <h2 style="color: #ff69b4; font-size: 28px; margin-top: 30px;">You make me so happy! 🎉</h2>
+    
+    <a href="letter.html">Go back</a>
+</div>
+
+<script>
+// Create confetti effect
+function createConfetti() {
+    const confettiCount = 50;
+    const colors = ['#ff69b4', '#667eea', '#764ba2', '#ffe66d', '#ff6b6b', '#4ecdc4'];
+    
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animation = `confetti-fall ${2 + Math.random() * 1}s linear forwards`;
+        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        document.body.appendChild(confetti);
+    }
+}
+
+// Create confetti on page load
+window.addEventListener('load', createConfetti);
+</script>
 
 </body>
 </html>
