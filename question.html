@@ -2,13 +2,33 @@
 <html>
 <head>
 <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     height:100vh;
-    font-family:Arial;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+h1 {
+    font-size: 48px;
+    color: white;
+    margin-bottom: 40px;
+    animation: fadeIn 0.8s ease-in;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+div {
+    display: flex;
+    gap: 20px;
 }
 
 button{
@@ -16,6 +36,57 @@ button{
     padding:15px 30px;
     font-size:24px;
     cursor:pointer;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#yes {
+    background: #ff69b4;
+    color: white;
+}
+
+#yes:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+}
+
+#no {
+    background: #ff6b6b;
+    color: white;
+}
+
+#no:hover {
+    transform: scale(0.95);
+}
+
+#no:active {
+    transform: scale(0.9);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 </style>
 </head>
@@ -41,6 +112,7 @@ document.getElementById("no").onclick = function () {
         (15 + yesSize / 4) + "px " + (30 + yesSize / 2) + "px";
 
     document.getElementById("no").style.fontSize = noSize + "px";
+    document.getElementById("no").style.animation = "pulse 0.3s ease";
 };
 
 document.getElementById("yes").onclick = function () {
