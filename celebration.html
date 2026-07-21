@@ -17,11 +17,13 @@ body{
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     overflow: hidden;
+    position: relative;
 }
 
 .celebration-container {
     text-align: center;
     z-index: 10;
+    position: relative;
 }
 
 h1 {
@@ -99,12 +101,12 @@ a:active {
     transform: scale(1.05);
 }
 
-/* Confetti styles */
 .confetti {
     position: fixed;
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     pointer-events: none;
+    z-index: 1;
 }
 
 @keyframes fadeIn {
@@ -156,20 +158,10 @@ a:active {
     }
 }
 
-@keyframes confetti-fall {
+@keyframes fall {
     to {
-        transform: translateY(100vh) rotate(360deg);
+        transform: translateY(100vh) rotate(720deg);
         opacity: 0;
-    }
-}
-
-@keyframes confetti-float {
-    0%, 100% {
-        transform: translateX(0) translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    50% {
-        transform: translateX(100px) translateY(-50px) rotate(180deg);
     }
 }
 </style>
@@ -194,24 +186,24 @@ a:active {
 </div>
 
 <script>
-// Create confetti effect
 function createConfetti() {
-    const confettiCount = 50;
-    const colors = ['#ff69b4', '#667eea', '#764ba2', '#ffe66d', '#ff6b6b', '#4ecdc4'];
+    const colors = ['#ff69b4', '#667eea', '#764ba2', '#ffe66d', '#ff6b6b', '#4ecdc4', '#ffd700', '#ff1493'];
     
-    for (let i = 0; i < confettiCount; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * window.innerWidth + 'px';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.animation = `confetti-fall ${2 + Math.random() * 1}s linear forwards`;
-        confetti.style.animationDelay = Math.random() * 0.5 + 's';
-        document.body.appendChild(confetti);
+    for (let i = 0; i < 100; i++) {
+        setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.top = '-20px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animation = `fall ${2 + Math.random() * 2}s linear forwards`;
+            document.body.appendChild(confetti);
+        }, i * 30);
     }
 }
 
-// Create confetti on page load
-window.addEventListener('load', createConfetti);
+// Start confetti immediately
+createConfetti();
 </script>
 
 </body>
